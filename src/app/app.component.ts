@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'Atkin';
   prime: number;
   primes = [];
-  limit: number;
+  limit = 10;
 
   constructor() {
 
