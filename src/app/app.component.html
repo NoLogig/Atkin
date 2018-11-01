@@ -1,25 +1,2 @@
-<mat-card>
-    <form class="example-form">
-  
-      <mat-form-field class="example-full-width">
-  
-        <input matInput type="number" #limitSrc placeholder="Enter prime limit" [value]="10" (change)="this.limit = limitSrc.value" />
-  
-      </mat-form-field>
-  
-    </form>
-  
-    <br>
-  
-    <button mat-button type="button" (click)="atkin()">Atkin</button>
-  
-    <p>
-      <span *ngFor="let item of primes; index as i">
-        <button mat-button *ngIf="!(i === 0)" [color]="item ? 'primary' : 'accent'">{{ i <= 9 ? '0' + i : i }} </button>
-      </span> 
-    </p> 
-
-  
-  </mat-card>
-
+<nologig-sieve-atkin></nologig-sieve-atkin>
 <router-outlet></router-outlet>
