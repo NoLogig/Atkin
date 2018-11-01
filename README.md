@@ -1,4 +1,10 @@
-# Atkin
+# [Atkin](https://de.wikipedia.org/wiki/Sieb_von_Atkin)
+[![Dependencies](https://img.shields.io/david/NoLogig/Atkin.svg)](https://david-dm.org/NoLogig/Atkin)
+[![License](https://img.shields.io/github/license/NoLogig/Atkin.svg)](https://choosealicense.com/licenses/mit/)
+[![Donate](https://img.shields.io/badge/PayPal-Donate-blue.svg)](https://www.paypal.me/NoLogig)
+
+## Sample Preview Atkin 
+![Atkin Sample](https://github.com/NoLogig/Atkin/blob/master/src/assets/sieve-atkin.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
