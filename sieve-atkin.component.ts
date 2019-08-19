@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'nologig-sieve-atkin',
+  selector: 'nlg-sieve-atkin',
   templateUrl: './sieve-atkin.component.html',
   styleUrls: ['./sieve-atkin.component.scss']
 })
@@ -11,15 +11,14 @@ export class SieveAtkinComponent {
   primes = [];
   limit = 100;
 
-  constructor() {
-
-  }
+  constructor() { }
 
   initPrimeArray(limit) {
 
     for (let i = 0; i < limit; i++) {
       this.primes[i] = false;
     }
+
     this.primes[1] = true;
     this.primes[2] = true;
     this.primes[3] = true;
@@ -30,41 +29,40 @@ export class SieveAtkinComponent {
     // All values are non-prie
     this.initPrimeArray(this.limit);
 
-    let limit = this.primes.length;
-    let sqrtlimit = Math.sqrt(limit);
+    let primelimit = this.primes.length;
 
     // isPrime()
-    for (let x = 1; x <= sqrtlimit; x++) {
+    for (let i = 1, sqrtlimit = Math.sqrt(primelimit); i <= sqrtlimit; i++) {
 
       // sqare²
-      let xsqr = x * x;
+      let sqr = i * i;
 
       for (let y = 1; y <= sqrtlimit; y++) {
 
         let ysqr = y * y;
-        let nxy = 4 * xsqr + ysqr;
+        let nxy = 4 * sqr + ysqr;
         let nmod12 = nxy % 12;
 
-        if (nxy <= limit && (nmod12 === 1 || nmod12 === 5)) {
+        if (nxy <= primelimit && (nmod12 === 1 || nmod12 === 5)) {
           this.primes[nxy] = (this.primes[nxy]) ? false : true;
         }
 
-        nxy = 3 * xsqr + ysqr;
-        if (nxy <= limit && nxy % 12 === 7) {
+        nxy = 3 * sqr + ysqr;
+        if (nxy <= primelimit && nxy % 12 === 7) {
           this.primes[nxy] = (this.primes[nxy]) ? false : true;
         }
 
-        nxy = 3 * xsqr - ysqr;
-        if (x > y && nxy <= limit && nxy % 12 === 11) {
+        nxy = 3 * sqr - ysqr;
+        if (i > y && nxy <= primelimit && nxy % 12 === 11) {
           this.primes[nxy] = (this.primes[nxy]) ? false : true;
         }
       }
     }
 
-    for (let n = 5; n <= sqrtlimit; n++) {
+    for (let n = 5; n <= primelimit; n++) {
 
       if (this.primes[n]) {
-        let max = Math.floor(limit / n / n);
+        let max = Math.floor(primelimit / n / n);
         let nsqr = n * n;
 
         for (let k = 1; k <= max; k++) {
@@ -73,21 +71,14 @@ export class SieveAtkinComponent {
       }
     }
   }
+  
 }
 
 /** Sieb von Atkin
-  * Zur Navigation springenZur Suche springen
   * Das Sieb von Atkin ist ein schneller, moderner Algorithmus zur Bestimmung aller Primzahlen
   * bis zu einer vorgegebenen Grenze. Es ist eine optimierte Version des antiken Sieb des Eratosthenes:
   * Das Atkinsieb leistet einige Vorarbeit und streicht dann alle Vielfachen von Primzahlquadraten.
   * Es wurde von A. O. L. Atkin und Daniel J. Bernstein entwickelt.
-  *
-  * Inhaltsverzeichnis
-  * 1	Algorithmus
-  * 2	Erklärung
-  * 3	Komplexität
-  * 4	Literatur
-  * 5	Weblinks
   *
   * Algorithmus
   * Alle Reste sind Modulo 60 Reste (der Rest nach einer Division durch 60 wird betrachtet).
